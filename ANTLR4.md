@@ -96,3 +96,14 @@ public class EvalVisitor extends CalcBaseVisitor<Integer> {
 }
 ```
 
+## prog
+规则prog 表示prog是一个或多个stat。
+## stat
+规则stat 适配三种子规则：空行、表达式expr、赋值表达式 ID’=’expr。
+## expr
+表达式expr适配五种子规则：乘除法、加减法、整型、ID、括号表达式。很显然，这是一个递归的定义。
+## 基础元素定义
+最后定义的是组成复合规则的基础元素，比如：规则`ID: [a-zA-Z]+`表示ID限于大小写英文字符串；INT: [0-9]+; 表示INT这个规则是0-9之间的一个或多个数字，当然这个定义其实并不严格。再严格一点，应该限制其长度。
+
+
+

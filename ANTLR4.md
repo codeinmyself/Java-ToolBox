@@ -104,6 +104,10 @@ public class EvalVisitor extends CalcBaseVisitor<Integer> {
 表达式expr适配五种子规则：乘除法、加减法、整型、ID、括号表达式。很显然，这是一个递归的定义。
 ## 基础元素定义
 最后定义的是组成复合规则的基础元素，比如：规则`ID: [a-zA-Z]+`表示ID限于大小写英文字符串；INT: [0-9]+; 表示INT这个规则是0-9之间的一个或多个数字，当然这个定义其实并不严格。再严格一点，应该限制其长度。
+## Visitor和Listener的区别
++ Listener模式通过walker对象自行遍历，不用考虑其语法树上下级关系。Vistor需要自行控制访问的子节点，如果遗漏了某个子节点，那么整个子节点都访问不到了。
++ Listener模式的方法没有返回值，Vistor模式可以设定任意返回值。
++ Listener模式的访问栈清晰明确，Vistor模式是方法调用栈，如果实现出错有可能导致StackOverFlow
 
 
 

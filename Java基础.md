@@ -24,3 +24,34 @@
 
 ### 引用拷贝和浅拷贝、深拷贝的区别
 https://guide-blog-images.oss-cn-shenzhen.aliyuncs.com/github/javaguide/java/basis/shallow&deep-copy.jpg
+
+## Object的11个主要方法
+getClass
+hashCode
+equals
+clone
+toString
+notify
+notifyAll
+wait
+wait
+wait
+finalize
+
+## equals和==的区别
+== 对于基本类型和引用类型的作用效果是不同的：
+对于基本数据类型来说，== 比较的是值。
+对于引用数据类型来说，== 比较的是对象的内存地址。
+因为 Java 只有值传递，所以，对于 == 来说，不管是比较基本数据类型，还是引用数据类型的变量，其本质比较的都是值，只是引用类型变量存的值是对象的地址。
+equals() 方法存在两种使用情况：
+类没有重写 equals()方法 ：通过equals()比较该类的两个对象时，等价于通过“==”比较这两个对象，使用的默认是 Object类equals()方法。
+类重写了 equals()方法 ：一般我们都重写 equals()方法来比较两个对象中的属性是否相等；若它们的属性相等，则返回 true(即，认为这两个对象相等)。
+
+## 为什么要有 hashCode？
+当你把对象加入 HashSet 时，HashSet 会先计算对象的 hashCode 值来判断对象加入的位置，同时也会与其他已经加入的对象的 hashCode 值作比较，如果没有相符的 hashCode，HashSet 会假设对象没有重复出现。但是如果发现有相同 hashCode 值的对象，这时会调用 equals() 方法来检查 hashCode 相等的对象是否真的相同。如果两者相同，HashSet 就不会让其加入操作成功。如果不同的话，就会重新散列到其他位置。这样我们就大大减少了 equals 的次数，相应就大大提高了执行速度。
+
+## 为什么重写 equals() 时必须重写 hashCode() 方法？
+因为两个相等的对象的 hashCode 值必须是相等。也就是说如果 equals 方法判断两个对象是相等的，那这两个对象的 hashCode 值也要相等。
+如果重写 equals() 时没有重写 hashCode() 方法的话就可能会导致 equals 方法判断是相等的两个对象，hashCode 值却不相等。
+
+## String、StringBuffer、StringBuilder 的区别？
